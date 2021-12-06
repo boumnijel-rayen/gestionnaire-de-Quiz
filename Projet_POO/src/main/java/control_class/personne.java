@@ -9,7 +9,7 @@ package control_class;
  *
  * @author asus
  */ 
-public class personne {
+ public abstract class personne {
     private int id;
     private String username;
     private String password;
@@ -27,6 +27,11 @@ public class personne {
         this.username = username;
         this.password = password;
         this.cox = cox;
+    }
+    
+    public personne(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
     
     
@@ -63,6 +68,9 @@ public class personne {
         this.cox = cox;
     }
     
-    
+    public abstract Boolean connxion();
+    public abstract void connecter();
+    public abstract void ajouter();
+    public abstract Boolean existe();
     
 }
