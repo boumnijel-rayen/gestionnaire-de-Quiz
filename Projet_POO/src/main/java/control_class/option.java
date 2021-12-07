@@ -5,6 +5,14 @@
  */
 package control_class;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author asus
@@ -14,6 +22,13 @@ public class option {
     private String text;
     private Boolean rep;
     
+    
+    
+    Connection con;
+    PreparedStatement pst;
+    Statement st;
+    ResultSet rs;
+    
     public option(){
         num_o = 0;
         text = "";
@@ -22,6 +37,11 @@ public class option {
 
     public option(int num_o, String text, Boolean rep) {
         this.num_o = num_o;
+        this.text = text;
+        this.rep = rep;
+    }
+    
+    public option(String text, Boolean rep) {
         this.text = text;
         this.rep = rep;
     }
@@ -50,6 +70,21 @@ public class option {
         this.rep = rep;
     }
     
-    
+    public void ajouterOption(int num_qe){
+        int repA = 0;
+        if (rep == true)
+            repA=1;      
+        try {
+            String url="jdbc:mysql://localhost:3306/projet_poo";
+            con = DriverManager.getConnection(url,"rayen","rayen");
+            pst = con.prepareStatement("INSERT INTO `projet_poo`.`option` (`text`, `rep`, `num_qe`) VALUES (?,?,?)");
+            pst.setString(1, text);
+            pst.setInt(2, repA);
+            pst.setInt(3, num_qe);           
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "erreur !");
+        }
+    }
     
 }
