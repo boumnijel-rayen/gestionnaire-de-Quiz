@@ -113,4 +113,48 @@ public class QCM {
             }
     }
     
+    public void metAUn(){
+        try {
+                String url="jdbc:mysql://localhost:3306/projet_poo";
+                con = DriverManager.getConnection(url,"rayen","rayen");
+                st = con.createStatement();
+                st.executeUpdate("update qcm set qcmA=1 where num_qe="+num_qe);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "erreur !");
+            }
+    }
+    
+    public void afficherOptions(){
+        Boolean rep;
+        try {
+            String url="jdbc:mysql://localhost:3306/projet_poo";
+            con = DriverManager.getConnection(url,"rayen","rayen");
+            st = con.createStatement();
+            rs = st.executeQuery("select * from `projet_poo`.`option` where num_qe="+num_qe);
+            while(rs.next()){
+                if (rs.getInt("rep") == 1)
+                    rep = true;
+                else
+                    rep=false;
+                option o = new option(rs.getInt("num_o"),rs.getString("text"),rep);
+                options.add(o);
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"erreur !");
+        }
+    }
+    
+    public void modifierQcm(){
+        try {
+                String url="jdbc:mysql://localhost:3306/projet_poo";
+                con = DriverManager.getConnection(url,"rayen","rayen");
+                st = con.createStatement();
+                st.executeUpdate("update qcm set text='"+text+"' where num_qe="+num_qe);
+                JOptionPane.showMessageDialog(null, "modification fait avec success");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "erreur !");
+            }
+    }
+    
 }

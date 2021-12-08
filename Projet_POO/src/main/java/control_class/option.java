@@ -87,4 +87,21 @@ public class option {
         }
     }
     
+    public void modifierOption(){
+        int R;
+        if (rep==true)
+            R=1;
+        else
+            R=0;
+        try {
+                String url="jdbc:mysql://localhost:3306/projet_poo";
+                con = DriverManager.getConnection(url,"rayen","rayen");
+                st = con.createStatement();
+                st.executeUpdate("update `projet_poo`.`option` set text='"+text+"',rep="+rep+" where num_o="+num_o);
+                JOptionPane.showMessageDialog(null, "modification fait avec success");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "erreur !");
+            }
+    }
+    
 }

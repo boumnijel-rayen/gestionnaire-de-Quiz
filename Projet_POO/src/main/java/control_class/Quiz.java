@@ -121,4 +121,31 @@ public class Quiz {
             }
     }
     
+    public void metAUn(){
+        try {
+                String url="jdbc:mysql://localhost:3306/projet_poo";
+                con = DriverManager.getConnection(url,"rayen","rayen");
+                st = con.createStatement();
+                st.executeUpdate("update quiz set quizM=1 where num_q="+num_q);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "erreur !");
+            }
+    }
+    
+    public void afficherQuestion(){
+        try {
+            String url="jdbc:mysql://localhost:3306/projet_poo";
+            con = DriverManager.getConnection(url,"rayen","rayen");
+            st = con.createStatement();
+            rs = st.executeQuery("select * from qcm where num_q="+num_q);
+            while(rs.next()){
+                QCM q = new QCM(rs.getInt("num_qe"),rs.getString("text"),0);
+                QCMs.add(q);
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"erreur !");
+        }
+    }
+    
 }
