@@ -150,4 +150,30 @@ public class etudiant extends personne{
         return test;
     }
     
+    public int quiConnecter(){
+        int id=-1;
+        try {
+            String url="jdbc:mysql://localhost:3306/projet_poo";
+            con = DriverManager.getConnection(url,"rayen","rayen");
+            st = con.createStatement();
+            rs = st.executeQuery("select id_e from etudiant where connexion = 1");
+            rs.next();
+            id = rs.getInt(1);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"erreur !");
+        }
+        return id;
+    }
+    
+    public void deconnexion(){
+        try {
+                String url="jdbc:mysql://localhost:3306/projet_poo";
+                con = DriverManager.getConnection(url,"rayen","rayen");
+                st = con.createStatement();
+                st.executeUpdate("update etudiant set connexion=0 where id_e="+getId());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "erreur !");
+            }
+    }
+    
 }

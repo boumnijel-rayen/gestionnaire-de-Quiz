@@ -148,4 +148,17 @@ public class Quiz {
         }
     }
     
+    public void supprimerQuiz(){
+        try {
+            String url="jdbc:mysql://localhost:3306/projet_poo";
+            con = DriverManager.getConnection(url,"rayen","rayen");
+            st = con.createStatement();
+            st.executeUpdate("DELETE FROM quiz where num_q="+num_q);
+            JOptionPane.showMessageDialog(null, "supprission fait avec success");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "erreur !");
+        }
+    }
+    
+    
 }
