@@ -27,6 +27,7 @@ public class QuizUI extends javax.swing.JFrame {
         REPs=new int [50];
         initComponents();
         afficherQuizNonR();
+        afficherQuizR();
     }
     
     int REPs[] ;
@@ -58,6 +59,33 @@ public class QuizUI extends javax.swing.JFrame {
             }
             
         }      
+    }
+    
+    public void afficherQuizR(){
+        Quiz q = new Quiz();
+        reponse r = new reponse();
+        etudiant e = new etudiant();
+        DefaultTableModel Model = (DefaultTableModel)quizsC.getModel();
+        while(quizsC.getRowCount() > 0){
+            Model.removeRow(0);
+        }
+        ArrayList<Quiz> Q = new ArrayList<Quiz>();
+        ArrayList<reponse> R = new ArrayList<reponse>();
+        R = r.chargerReponse(e.quiConnecter());
+        Q = q.chargerListQuiz();
+        for (int i=0;i<Q.size();i++){
+            int test=0;
+            for (int j =0 ; j<R.size();j++){
+                if (R.get(j).getQ().getNum_q() == Q.get(i).getNum_q()){
+                    test=1;
+                }
+            }
+            if (test==1){
+                String data[] = {Q.get(i).getNum_q()+"",Q.get(i).getTheme()};
+                Model.addRow(data);
+            }
+            
+        }
     }
 
     /**
@@ -101,6 +129,16 @@ public class QuizUI extends javax.swing.JFrame {
         quizsP = new javax.swing.JTable();
         jButton8 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        quizsC = new javax.swing.JTable();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        questionsC = new javax.swing.JTable();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        optionsC = new javax.swing.JTable();
+        jButton9 = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -129,7 +167,7 @@ public class QuizUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(272, 272, 272)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,7 +205,7 @@ public class QuizUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
@@ -281,7 +319,7 @@ public class QuizUI extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(79, 79, 79))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -378,7 +416,7 @@ public class QuizUI extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(278, 278, 278)
                         .addComponent(jButton8)))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -392,15 +430,116 @@ public class QuizUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("consulter les scores", jPanel4);
 
+        quizsC.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "numero du Quiz", "theme"
+            }
+        ));
+        jScrollPane6.setViewportView(quizsC);
+
+        questionsC.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "numero de la Question", "Question"
+            }
+        ));
+        jScrollPane7.setViewportView(questionsC);
+
+        optionsC.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "numero de l'option", "option", "reponse"
+            }
+        ));
+        jScrollPane8.setViewportView(optionsC);
+
+        jButton9.setText("consulter");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
+        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+
+        jButton10.setText("refrecher");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
+        jButton11.setText("voir la correction");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 674, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
+            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(jButton10))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(244, 244, 244)
+                        .addComponent(jButton9))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addComponent(jButton11)))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jButton10)))
+                .addGap(30, 30, 30)
+                .addComponent(jButton9)
+                .addGap(29, 29, 29)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(jButton11)
+                .addGap(49, 49, 49))
         );
 
         jTabbedPane1.addTab("consulter la correction", jPanel5);
@@ -575,6 +714,42 @@ public class QuizUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        DefaultTableModel Model = (DefaultTableModel)quizsC.getModel();
+        DefaultTableModel Model1 = (DefaultTableModel)questionsC.getModel();
+        while(questionsC.getRowCount() > 0){
+            Model1.removeRow(0);
+        }
+        int num_q = Integer.parseInt((String) Model.getValueAt(quizsC.getSelectedRow(), 0));
+        Quiz q = new Quiz();
+        q.setNum_q(num_q);
+        q.afficherQuestion();
+        for (int i=0 ; i<q.getQCMs().size();i++){
+            String data[] = {q.getQCMs().get(i).getNum_qe()+"",q.getQCMs().get(i).getText()};
+            Model1.addRow(data);
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        afficherQuizR();
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        DefaultTableModel Model = (DefaultTableModel)questionsC.getModel();
+        DefaultTableModel Model1 = (DefaultTableModel)optionsC.getModel();
+        while(optionsC.getRowCount() > 0){
+            Model1.removeRow(0);
+        }
+        int num_qe = Integer.parseInt((String) Model.getValueAt(questionsC.getSelectedRow(), 0));
+        QCM q = new QCM();
+        q.setNum_qe(num_qe);
+        q.afficherOptions();
+        for (int i=0 ; i<q.getOptions().size();i++){
+            String data[] = {q.getOptions().get(i).getNum_o()+"",q.getOptions().get(i).getText(),q.getOptions().get(i).getRep()+""};
+            Model1.addRow(data);
+        }
+    }//GEN-LAST:event_jButton11ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -617,6 +792,8 @@ public class QuizUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JRadioButton f;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -624,6 +801,7 @@ public class QuizUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -635,11 +813,18 @@ public class QuizUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable options;
+    private javax.swing.JTable optionsC;
     private javax.swing.JTable questions;
+    private javax.swing.JTable questionsC;
     private javax.swing.JTable quizs;
+    private javax.swing.JTable quizsC;
     private javax.swing.JTable quizsP;
     private javax.swing.JTable table;
     private javax.swing.JRadioButton v;
