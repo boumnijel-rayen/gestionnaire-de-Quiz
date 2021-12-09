@@ -160,5 +160,23 @@ public class Quiz {
         }
     }
     
-    
+    public ArrayList<Quiz> chargerListQuiz(){
+        ArrayList<Quiz> Q = new ArrayList<Quiz>();
+        try {
+            String url="jdbc:mysql://localhost:3306/projet_poo";
+            con = DriverManager.getConnection(url,"rayen","rayen");
+            st = con.createStatement();
+            rs = st.executeQuery("select * from quiz");
+            while(rs.next()){
+                Quiz e = new Quiz();
+                e.setNum_q(rs.getInt("num_q"));
+                e.setTheme(rs.getString("theme"));
+                Q.add(e);
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"erreur !");
+        }
+        return Q;
+    }
 }

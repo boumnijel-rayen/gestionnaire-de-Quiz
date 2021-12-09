@@ -104,4 +104,24 @@ public class option {
             }
     }
     
+    public void repOptions(){
+        int r;
+        try {
+            String url="jdbc:mysql://localhost:3306/projet_poo";
+            con = DriverManager.getConnection(url,"rayen","rayen");
+            st = con.createStatement();
+            rs = st.executeQuery("select * from `projet_poo`.`option` where num_o="+num_o);
+            rs.next();
+            r = rs.getInt("rep");   
+            if (r==1){
+                rep=true;
+            }else{
+                rep=false;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"erreur !");
+        }      
+    }
+    
+    
 }
