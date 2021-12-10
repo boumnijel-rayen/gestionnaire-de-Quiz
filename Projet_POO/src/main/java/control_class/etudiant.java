@@ -176,4 +176,17 @@ public class etudiant extends personne{
             }
     }
     
+    public void getToutInfoEtudiant(){
+        try {
+            String url="jdbc:mysql://localhost:3306/projet_poo";
+            con = DriverManager.getConnection(url,"rayen","rayen");
+            st = con.createStatement();
+            rs = st.executeQuery("select * from etudiant where id_e="+getId());
+            rs.next();
+            setUsername(rs.getString("username"));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"erreur !");
+        }
+    }
+    
 }

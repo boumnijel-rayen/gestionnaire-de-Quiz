@@ -98,4 +98,42 @@ public class reponse {
         }
     }
     
+    public ArrayList<reponse> chargerRepQuiz(){
+        ArrayList<reponse> R = new ArrayList<reponse>();
+        try {
+            String url="jdbc:mysql://localhost:3306/projet_poo";
+            con = DriverManager.getConnection(url,"rayen","rayen");
+            st = con.createStatement();
+            rs = st.executeQuery("select * from repondre where num_q="+getQ().getNum_q());
+            while(rs.next()){
+                reponse r = new reponse();
+                r.getE().setId(rs.getInt("id_e"));
+                r.setScore(rs.getInt("score"));
+                R.add(r);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"erreur !");
+        }
+        return R;
+    }
+    
+    public ArrayList<reponse> chargerRepQuizRegrouper(){
+        ArrayList<reponse> R = new ArrayList<reponse>();
+        try {
+            String url="jdbc:mysql://localhost:3306/projet_poo";
+            con = DriverManager.getConnection(url,"rayen","rayen");
+            st = con.createStatement();
+            rs = st.executeQuery("SELECT * from repondre WHERE num_q="+getQ().getNum_q()+" GROUP By(num_q)");
+            while(rs.next()){
+                reponse r = new reponse();
+                r.getE().setId(rs.getInt("id_e"));
+                r.setScore(rs.getInt("score"));
+                R.add(r);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"erreur !");
+        }
+        return R;
+    } 
+    
 }
