@@ -51,6 +51,7 @@ public class creerCompteEnseignant extends javax.swing.JFrame {
         cpass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Création d'un compte Enseignant");
 
         jLabel1.setText("User Name :");
 

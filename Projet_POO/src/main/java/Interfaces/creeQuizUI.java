@@ -200,6 +200,9 @@ public class creeQuizUI extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Espace Enseignant");
+
+        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
@@ -219,28 +222,31 @@ public class creeQuizUI extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(jLabel3)
-                .addContainerGap(76, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(263, 263, 263))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(262, 262, 262)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(180, Short.MAX_VALUE)
                 .addComponent(jLabel3)
-                .addGap(84, 84, 84)
+                .addGap(62, 62, 62)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(141, 141, 141))
+                .addGap(163, 163, 163))
         );
 
         nav.addTab("Acceuil", jPanel2);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 51, 204));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Choisissez le theme du Quiz :");
 
         theme.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "POO", "BD", "COOSI", "IA", "STAT" }));
@@ -255,8 +261,10 @@ public class creeQuizUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Question :");
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("option :");
 
         buttonGroup1.add(v);
@@ -339,7 +347,7 @@ public class creeQuizUI extends javax.swing.JFrame {
                                 .addComponent(v)
                                 .addGap(10, 10, 10)
                                 .addComponent(nv)))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,8 +382,10 @@ public class creeQuizUI extends javax.swing.JFrame {
 
         nav.addTab("creer un Quiz", jPanel1);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 51, 204));
+        jPanel3.setBackground(new java.awt.Color(0, 102, 102));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Choisissez un Quiz :");
 
         quizsV.setModel(new javax.swing.table.DefaultTableModel(
@@ -383,7 +393,7 @@ public class creeQuizUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "num_q", "theme"
+                "Numero du Quiz", "Theme"
             }
         ));
         jScrollPane4.setViewportView(quizsV);
@@ -391,7 +401,7 @@ public class creeQuizUI extends javax.swing.JFrame {
             quizsV.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        jButton13.setText("valider");
+        jButton13.setText("Valider");
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton13ActionPerformed(evt);
@@ -403,7 +413,7 @@ public class creeQuizUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "num_qe", "titre"
+                "Numero de la Question", "Titre"
             }
         ));
         jScrollPane5.setViewportView(questionsVI);
@@ -413,16 +423,18 @@ public class creeQuizUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "num_o", "num_qe", "text", "reponse"
+                "Numero de l'option", "Numero de la Question", "Option", "Reponse"
             }
         ));
         jScrollPane6.setViewportView(optionsVI);
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Questions");
 
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Options");
 
-        jButton14.setText("refrecher");
+        jButton14.setText("Actualiser");
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
@@ -459,14 +471,14 @@ public class creeQuizUI extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(261, 261, 261)
                         .addComponent(jLabel7)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(39, Short.MAX_VALUE)
+                        .addContainerGap(36, Short.MAX_VALUE)
                         .addComponent(jLabel7)
                         .addGap(26, 26, 26)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -489,18 +501,20 @@ public class creeQuizUI extends javax.swing.JFrame {
 
         nav.addTab("visualiser un Quiz", jPanel3);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 51, 204));
+        jPanel4.setBackground(new java.awt.Color(0, 102, 102));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Choisissez un Quiz :");
 
-        jButton11.setText("refrecher");
+        jButton11.setText("Actualiser");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11ActionPerformed(evt);
             }
         });
 
-        jButton12.setText("supprimer");
+        jButton12.setText("Supprimer");
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
@@ -526,7 +540,7 @@ public class creeQuizUI extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addGap(60, 60, 60)
                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton11)
                 .addGap(111, 111, 111))
             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -554,8 +568,10 @@ public class creeQuizUI extends javax.swing.JFrame {
 
         nav.addTab("supprimer", jPanel4);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 51, 204));
+        jPanel5.setBackground(new java.awt.Color(0, 102, 102));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Choisissez un Quiz :");
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
@@ -566,7 +582,7 @@ public class creeQuizUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "num_qe", "Qestions"
+                "Numero de la Question", "Qestions"
             }
         ));
         jScrollPane2.setViewportView(questions);
@@ -576,26 +592,26 @@ public class creeQuizUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "num_o", "Options", "reponse"
+                "Numero de l'option", "Options", "Reponse"
             }
         ));
         jScrollPane3.setViewportView(Options);
 
-        jButton6.setText("refrecher");
+        jButton6.setText("Actualiser");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
 
-        jButton7.setText("choisir");
+        jButton7.setText("Choisir");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
 
-        jButton8.setText("charger");
+        jButton8.setText("Charger");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -608,7 +624,7 @@ public class creeQuizUI extends javax.swing.JFrame {
             }
         });
 
-        jButton9.setText("modifier");
+        jButton9.setText("Modifier");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -621,7 +637,7 @@ public class creeQuizUI extends javax.swing.JFrame {
         buttonGroup2.add(nvM);
         nvM.setText("non valide");
 
-        jButton10.setText("modifier");
+        jButton10.setText("Modifier");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -633,13 +649,13 @@ public class creeQuizUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Numero du Quiz", "theme"
+                "Numero du Quiz", "Theme"
             }
         ));
         jScrollPane10.setViewportView(quizsM);
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Choisissez un Question :");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -654,7 +670,7 @@ public class creeQuizUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(83, 83, 83))
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(56, Short.MAX_VALUE)
+                .addContainerGap(55, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -686,7 +702,7 @@ public class creeQuizUI extends javax.swing.JFrame {
                         .addGap(109, 109, 109)
                         .addComponent(jButton9))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
+                        .addGap(42, 42, 42)
                         .addComponent(jLabel14)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -725,10 +741,12 @@ public class creeQuizUI extends javax.swing.JFrame {
                     .addComponent(QestionM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton9)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         nav.addTab("modifier", jPanel5);
+
+        jPanel6.setBackground(new java.awt.Color(0, 102, 102));
 
         quizsVE.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -738,12 +756,12 @@ public class creeQuizUI extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "numero du Quiz", "theme"
+                "Numero du Quiz", "Theme"
             }
         ));
         jScrollPane7.setViewportView(quizsVE);
 
-        jButton15.setText("refrecher");
+        jButton15.setText("Actualiser");
         jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton15ActionPerformed(evt);
@@ -753,7 +771,7 @@ public class creeQuizUI extends javax.swing.JFrame {
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
 
-        jButton16.setText("afficher");
+        jButton16.setText("Afficher");
         jButton16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton16ActionPerformed(evt);
@@ -768,13 +786,13 @@ public class creeQuizUI extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "numero d'etudiant", "user name", "score"
+                "Numero d'etudiant", "User Name", "Score"
             }
         ));
         jScrollPane8.setViewportView(Etudiants);
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Choisissez un Quiz :");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -784,7 +802,7 @@ public class creeQuizUI extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(115, 115, 115)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addComponent(jButton15)
                 .addGap(45, 45, 45))
             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -797,7 +815,7 @@ public class creeQuizUI extends javax.swing.JFrame {
                         .addGap(114, 114, 114)
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(265, 265, 265)
+                        .addGap(240, 240, 240)
                         .addComponent(jLabel12)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -819,10 +837,12 @@ public class creeQuizUI extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         nav.addTab("consulter liste d'etudiants", jPanel6);
+
+        jPanel7.setBackground(new java.awt.Color(0, 102, 102));
 
         quizsST.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -837,7 +857,7 @@ public class creeQuizUI extends javax.swing.JFrame {
         ));
         jScrollPane9.setViewportView(quizsST);
 
-        jButton17.setText("refrecher");
+        jButton17.setText("Actualiser");
         jButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton17ActionPerformed(evt);
@@ -847,7 +867,7 @@ public class creeQuizUI extends javax.swing.JFrame {
         jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
 
-        jButton18.setText("afficher");
+        jButton18.setText("Afficher");
         jButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton18ActionPerformed(evt);
@@ -870,8 +890,8 @@ public class creeQuizUI extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(0, 204, 0));
         jLabel11.setText("Taux de réponse justes");
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Choisissez un Quiz :");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -901,9 +921,9 @@ public class creeQuizUI extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addComponent(jLabel10))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(281, 281, 281)
+                        .addGap(245, 245, 245)
                         .addComponent(jLabel13)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -921,7 +941,7 @@ public class creeQuizUI extends javax.swing.JFrame {
                 .addComponent(jButton18)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jLabel10))

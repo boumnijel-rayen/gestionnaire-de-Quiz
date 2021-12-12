@@ -48,6 +48,8 @@ public class creerCompteEtudiant extends javax.swing.JFrame {
         cpass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Création d'un compte Etudiant");
+        setBackground(new java.awt.Color(0, 102, 102));
 
         jButton1.setText("retour");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
